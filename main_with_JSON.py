@@ -73,6 +73,20 @@ def listar_usuarios():
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
 
+def listar_pets():
+    listar_pets = carregar_pets()
+    if listar_pets:
+        print("=" * 50)
+        print("LISTA DE pets:") 
+        print("-" * 50)
+        for pets in listar_pets:
+            print("*" * 50)
+            print(f"NOME: {pets['nomePet']}, IDADE: {pets['idadePet']}")
+            print("*" * 50)
+            print("=" * 50)
+    else:
+        print("😒 NENHUM USUÁRIO CADASTRADO.")
+
 def login(email_passado, senha_passada):
     usuarios = carregar_usuarios()
     for usuario in usuarios:
@@ -174,6 +188,7 @@ def main():
                                   print(4)
                               elif opcao_logado == '5':
                                   print(5)
+                                  listar_pets()
                               elif opcao_logado == '6':
                                   print(6)
                               elif opcao_logado == '7':

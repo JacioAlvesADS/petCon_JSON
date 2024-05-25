@@ -1,37 +1,222 @@
 [
-    {
-        "nomePet": "jacio",
-        "idadePet": "a",
-        "racaPet": "a",
-        "abrigo": "a",
-        "tamanho": "a"
-    },
-    {
-        "nomePet": "ruth",
-        "idadePet": "12",
-        "racaPet": "vira lata",
-        "abrigo": "abrigo a ",
-        "tamanho": "p"
-    },
-    {
-        "nomePet": "a",
-        "idadePet": "a",
-        "racaPet": "a",
-        "abrigo": "a",
-        "tamanho": "a"
-    },
-    {
-        "nomePet": "a",
-        "idadePet": "a",
-        "racaPet": "a",
-        "abrigo": "a",
-        "tamanho": "a"
-    },
+    
     {
         "nomePet": "aurora",
         "idadePet": "3",
         "racaPet": "vira lata",
         "abrigo": "casa",
         "tamanho": "M"
+    },
+    {
+        "nomePet": "Aurora",
+        "idadePet": "3",
+        "racaPet": "Vira Lata",
+        "abrigo": "casa",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Bobby",
+        "idadePet": "5",
+        "racaPet": "Labrador",
+        "abrigo": "apartamento",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Mia",
+        "idadePet": "2",
+        "racaPet": "Siamês",
+        "abrigo": "casa",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Rex",
+        "idadePet": "4",
+        "racaPet": "Pastor Alemão",
+        "abrigo": "quintal",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Luna",
+        "idadePet": "1",
+        "racaPet": "Poodle",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Charlie",
+        "idadePet": "6",
+        "racaPet": "Beagle",
+        "abrigo": "casa",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Bella",
+        "idadePet": "3",
+        "racaPet": "Bulldog Francês",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Max",
+        "idadePet": "2",
+        "racaPet": "Golden Retriever",
+        "abrigo": "casa",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Simba",
+        "idadePet": "4",
+        "racaPet": "Persa",
+        "abrigo": "apartamento",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Lola",
+        "idadePet": "1",
+        "racaPet": "Shih Tzu",
+        "abrigo": "casa",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Oscar",
+        "idadePet": "5",
+        "racaPet": "Rottweiler",
+        "abrigo": "quintal",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Nina",
+        "idadePet": "2",
+        "racaPet": "Chihuahua",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Rocky",
+        "idadePet": "3",
+        "racaPet": "Boxer",
+        "abrigo": "casa",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Zoe",
+        "idadePet": "1",
+        "racaPet": "Maine Coon",
+        "abrigo": "apartamento",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Duke",
+        "idadePet": "4",
+        "racaPet": "Husky Siberiano",
+        "abrigo": "quintal",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Coco",
+        "idadePet": "5",
+        "racaPet": "Cocker Spaniel",
+        "abrigo": "casa",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Milo",
+        "idadePet": "2",
+        "racaPet": "Buldogue Inglês",
+        "abrigo": "apartamento",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Sadie",
+        "idadePet": "3",
+        "racaPet": "Golden Retriever",
+        "abrigo": "casa",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Toby",
+        "idadePet": "1",
+        "racaPet": "Pug",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Ruby",
+        "idadePet": "4",
+        "racaPet": "Pastor de Shetland",
+        "abrigo": "casa",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Ginger",
+        "idadePet": "3",
+        "racaPet": "Dachshund",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Murphy",
+        "idadePet": "5",
+        "racaPet": "Poodle",
+        "abrigo": "casa",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Bailey",
+        "idadePet": "2",
+        "racaPet": "Border Collie",
+        "abrigo": "quintal",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Chloe",
+        "idadePet": "1",
+        "racaPet": "Maltês",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Buddy",
+        "idadePet": "4",
+        "racaPet": "Cocker Spaniel",
+        "abrigo": "casa",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Pepper",
+        "idadePet": "3",
+        "racaPet": "Bulldog Francês",
+        "abrigo": "apartamento",
+        "tamanho": "P"
+    },
+    {
+        "nomePet": "Oliver",
+        "idadePet": "2",
+        "racaPet": "Labrador",
+        "abrigo": "casa",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Sasha",
+        "idadePet": "1",
+        "racaPet": "Husky Siberiano",
+        "abrigo": "quintal",
+        "tamanho": "G"
+    },
+    {
+        "nomePet": "Jasper",
+        "idadePet": "4",
+        "racaPet": "Beagle",
+        "abrigo": "apartamento",
+        "tamanho": "M"
+    },
+    {
+        "nomePet": "Finn",
+        "idadePet": "3",
+        "racaPet": "Golden Retriever",
+        "abrigo": "casa",
+        "tamanho": "G"
     }
+
+    
 ]
