@@ -36,6 +36,18 @@ def carregar_pets():
         pass
     return pets
 
+def carregar_abrigos():
+    abrigos = []
+    try:
+        if os.path.exists(abrigos):
+            with open(abrigos, 'r') as f:
+                abrigos = json.load(f)
+        if not isinstance(abrigos_list, list):
+            abrigos = []
+    except (json.JSONDecodeError, FileNotFoundError):
+        pass
+    return abrigos
+    
 def salvar_usuarios(usuarios):
     with open(arquivo, 'w') as f:
         json.dump(usuarios, f, indent=4, ensure_ascii=False)
@@ -46,6 +58,13 @@ def salvar_pets(lista_pets):
             json.dump(lista_pets, f, indent=4, ensure_ascii=False)
     except IOError:
         print("😡 ERRO AO SALVAR PETS.")
+
+def salvar_abrigos(abrigos_list):
+    try:
+        with open(abrigos, 'w') as f:
+            json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
+    except IOError:
+        print("ERRO AO SALVAR ABRIGOS.")
 
 def adicionar_usuario(nome, idade, email, senha, aptSize):
     usuarios = carregar_usuarios()
@@ -58,6 +77,12 @@ def adicionar_pet(nomePet, idadePet, racaPet, abrigo, tamanho):
     lista_pets.append({'nomePet': nomePet, 'idadePet': idadePet, 'racaPet': racaPet, 'abrigo': abrigo, 'tamanho': tamanho})
     salvar_pets(lista_pets)
     print("😎 PET ADICIONADO COM SUCESSO!")
+
+def cadastrar_abrigo(nome_abrigo, endereco_abrigo, capacidade):
+    abrigos_list = carregar_abrigos()
+    abrigos_list.append({'nome_abrigo': nome_abrigo, 'endereco_abrigo': endereco_abrigo, 'capacidade': capacidade})
+    salvar_abrigos(abrigos_list)
+    print("ABRIGO CADASTRADO COM SUCESSO!")
 
 def listar_usuarios():
     usuarios = carregar_usuarios()
