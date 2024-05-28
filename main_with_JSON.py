@@ -37,17 +37,17 @@ def carregar_pets():
     return pets
 
 def carregar_abrigos():
-    abrigos = []
+    abrigos_list = []
     try:
         if os.path.exists(abrigos):
             with open(abrigos, 'r') as f:
-                abrigos = json.load(f)
+                abrigos_list = json.load(f)
         if not isinstance(abrigos_list, list):
-            abrigos = []
+            abrigos_list = []
     except (json.JSONDecodeError, FileNotFoundError):
         pass
-    return abrigos
-    
+    return abrigos_list
+
 def salvar_usuarios(usuarios):
     with open(arquivo, 'w') as f:
         json.dump(usuarios, f, indent=4, ensure_ascii=False)
@@ -58,13 +58,6 @@ def salvar_pets(lista_pets):
             json.dump(lista_pets, f, indent=4, ensure_ascii=False)
     except IOError:
         print("😡 ERRO AO SALVAR PETS.")
-
-def salvar_abrigos(abrigos_list):
-    try:
-        with open(abrigos, 'w') as f:
-            json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
-    except IOError:
-        print("ERRO AO SALVAR ABRIGOS.")
 
 def adicionar_usuario(nome, idade, email, senha, aptSize):
     usuarios = carregar_usuarios()
@@ -77,12 +70,6 @@ def adicionar_pet(nomePet, idadePet, racaPet, abrigo, tamanho):
     lista_pets.append({'nomePet': nomePet, 'idadePet': idadePet, 'racaPet': racaPet, 'abrigo': abrigo, 'tamanho': tamanho})
     salvar_pets(lista_pets)
     print("😎 PET ADICIONADO COM SUCESSO!")
-
-def cadastrar_abrigo(nome_abrigo, endereco_abrigo, capacidade):
-    abrigos_list = carregar_abrigos()
-    abrigos_list.append({'nome_abrigo': nome_abrigo, 'endereco_abrigo': endereco_abrigo, 'capacidade': capacidade})
-    salvar_abrigos(abrigos_list)
-    print("ABRIGO CADASTRADO COM SUCESSO!")
 
 def listar_usuarios():
     usuarios = carregar_usuarios()
@@ -111,6 +98,58 @@ def listar_pets():
             print("=" * 50)
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
+
+def listar_abrigos_disponiveis():
+    abrigos_disponiveis = carregar_abrigos()
+    if abrigos_disponiveis:
+        print("=" * 50)
+        print("ABRIGOS DISPONÍVEIS:")
+        print("-" * 50)
+        for abrigo in abrigos_disponiveis:
+            print("*" * 50)
+            print(f"NOME: {abrigo['nome']}, LOCALIZAÇÃO: {abrigo['localizacao']}")
+            print("*" * 50)
+            print("=" * 50)
+    else:
+        print("😒 NENHUM ABRIGO CADASTRADO.")
+
+def adicionar_abrigo(nome, localizacao):
+    abrigos_list = carregar_abrigos()
+    abrigos_list.append({'nome': nome, 'localizacao': localizacao})
+    with open(abrigos, 'w') as f:
+        json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
+    print("😎 ABRIGO ADICIONADO COM SUCESSO!")
+
+def atualizar_abrigo(nome_antigo, novo_nome, nova_localizacao):
+    abrigos_list = carregar_abrigos()
+    for abrigo in abrigos_list:
+        if abrigo['nome'] == nome_antigo:
+            abrigo['nome'] = novo_nome
+            abrigo['localizacao'] = nova_localizacao
+            with open(abrigos, 'w') as f:
+                json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
+            print("😙 ABRIGO ATUALIZADO COM SUCESSO!")
+            return
+    print("😒 ABRIGO NÃO ENCONTRADO.")
+
+def excluir_abrigo(nome):
+    abrigos_list = carregar_abrigos()
+    for abrigo in abrigos_list:
+        if abrigo['nome'] == nome:
+            abrigos_list.remove(abrigo)
+            with open(abrigos, 'w') as f:
+                json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
+            print("😡 ABRIGO EXCLUÍDO COM SUCESSO!")
+            return
+    print("😒 ABRIGO NÃO ENCONTRADO.")
+
+def buscar_abrigo(nome):
+    abrigos_list = carregar_abrigos()
+    for abrigo in abrigos_list:
+        if abrigo['nome'] == nome:
+            print(f"NOME: {abrigo['nome']}, LOCALIZAÇÃO: {abrigo['localizacao']}")
+            return
+    print("😒 ABRIGO NÃO ENCONTRADO.")
 
 def login(email_passado, senha_passada):
     usuarios = carregar_usuarios()
@@ -215,7 +254,7 @@ def main():
                                   print(5)
                                   listar_pets()
                               elif opcao_logado == '6':
-                                  print(6)
+                                  listar_abrigos_disponiveis()
                               elif opcao_logado == '7':
                                   break
                               else:

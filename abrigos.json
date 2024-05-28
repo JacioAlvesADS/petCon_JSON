@@ -1,33 +1,18 @@
-[ 
-
+[
     {
-        'nome_abrigo': 'Abrigo das patas',
-        'endereco_abrigo': 'Rua da aurora, 142',
-        'capacidade': 30
+        "nome": "Abrigo A",
+        "localizacao": "Rua A, Número 1"
     },
     {
-        'nome_abrigo': 'Casa dos Bichinhos',
-        'endereco_abrigo': 'Avenida josé de Alencar, 64',
-        'capacidade': 25
+        "nome": "Abrigo B",
+        "localizacao": "Rua B, Número 2"
     },
     {
-        'nome_abrigo': 'Lar dos Amiguinhos',
-        'endereco_abrigo': 'Rua alfredo, 132',
-        'capacidade': 35
+        "nome": "Abrigo C",
+        "localizacao": "Rua C, Número 3"
     },
     {
-        'nome_abrigo': 'Lar dos Gatinhos',
-        'endereco_abrigo': 'Rua bom conselho, 144',
-        'capacidade': 50
-    },
-    {
-        'nome_abrigo': 'Casa das patinhas',
-        'endereço_abrigo': 'Rua Barbosa, 194',
-        'capacidade': 30
-    },
-    {
-        'nome_abrigo': 'Casa das 4 patas',
-        'endereco_abrigo': 'Rua das palmeiras, 445',
-        'capacidade': 60
+        "nome": "Abrigo D",
+        "localizacao": "Rua D, Número 4"
     }
 ]

@@ -210,18 +210,17 @@
         "tamanho": "M"
     },
     {
-        "nomePet": "Finn",
-        "idadePet": "3",
-        "racaPet": "Golden Retriever",
+        "nomePet": "aurora",
+        "idadePet": "12",
+        "racaPet": "casa",
         "abrigo": "casa",
-        "tamanho": "G"
+        "tamanho": "M"
     },
     {
-        "nome_pet": "pet",
-        "idade_pet": 12,
-        "raca_pet": "pitbull",
-        "abrigo": "casa",
-        "tamanho": "G",
-        "temperamento": "Assiduo"
+        "nomePet": "PET",
+        "idadePet": "12",
+        "racaPet": "PET",
+        "abrigo": "PET",
+        "tamanho": "M"
     }
 ]
