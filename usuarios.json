@@ -1,23 +1,30 @@
 [
     {
-        "nome": "J�cio",
+        "nome": "Jacio",
         "idade": "18",
         "email": "jacioalves6@gmail.com",
         "senha": "jacioalves",
-        "aptSize": "60"
+        "aptSize": 30
     },
     {
         "nome": "jacioalves",
         "idade": "14",
         "email": "jacioalves",
         "senha": "jacioalves",
-        "aptSize": "40"
+        "aptSize": 40
     },
     {
         "nome": "jacio",
         "idade": "14",
         "email": "ja",
         "senha": "a",
-        "aptSize": "aa"
+        "aptSize": 30
+    },
+    {
+        "nome": "thay",
+        "idade": "20",
+        "email": "thay",
+        "senha": "thay",
+        "aptSize": 150
     }
 ]
