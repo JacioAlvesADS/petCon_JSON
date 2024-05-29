@@ -259,14 +259,15 @@ def main():
                     aptSize = input("DIGITE O TAMANHO DA SUA RESIDÊNCIA EM M²:\n>>>")
                     adicionar_usuario(nome, idade, email, senha, aptSize)
                 elif opcao == "2":
-                    email_passado = input("DIGITE O EMAIL:\n>>> ")
-                    senha_passada = input("DIGITE A SENHA:\n>>> ")
-                    sucesso, nome = login(email_passado, senha_passada)
-                    if sucesso:
-                        print(f"😎 BEM-VINDO, {nome}!")
-                        while True:
-                            print("\nEscolha uma opção:\n1 - Adicionar novo Pet\n2 - Adotar um Pet\n3 - Alterar informações do pet\n4 - Excluir um Pet\n5 - Ver os pets disponíveis para adoção\n6 - Ver abrigos disponíveis\n7 - Editar perfil pessoal\n8 - Encerrar a Sessão")
-                            opcao_logado = input()
+                      email_passado = input("DIGITE O EMAIL:\n>>> ")
+                      senha_passada = input("DIGITE A SENHA:\n>>> ")
+                      sucesso, nome = login(email_passado, senha_passada)
+                      if sucesso:
+                          print(f"😎 BEM-VINDO, {nome}!")
+                          while True:
+                              
+                              print("\nEscolha uma opção:\n1 - Adicionar novo Pet\n2 - Adotar um Pet\n3 - Alterar informações do pet\n4 - Excluir um Pet\n5 - Ver os pets disponíveis para adoção\n6 - Ver abrigos disponíveis\n7 - Encerrar a Sessão\n")
+                              opcao_logado = input()
 
                             if opcao_logado == '1':
                                 nomePet = input("Digite o nome do pet:\n>>> ")
