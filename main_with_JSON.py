@@ -381,7 +381,7 @@ def main():
                 elif opcao_abrigo == "4":
                     print ("4")
                 elif opcao_abrigo == "5":
-                    print ("5")
+                 listar_abrigos_disponiveis()
                 elif opcao_abrigo == "6":
                     break
                 else:
