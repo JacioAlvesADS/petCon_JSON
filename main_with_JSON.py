@@ -2,7 +2,7 @@ import json
 import os
 from time import sleep
 
-class cor:
+class Cor:
     VERMELHO = '\033[91m'
     VERDE = '\033[92m'
     AMARELO = '\033[93m'
@@ -13,7 +13,7 @@ class cor:
 
 arquivo = os.path.join(os.path.dirname(__file__), 'usuarios.json')
 pets_arquivo = os.path.join(os.path.dirname(__file__), 'pets.json')
-abrigos = os.path.join(os.path.dirname(__file__), 'abrigos.json')
+abrigos_arquivo = os.path.join(os.path.dirname(__file__), 'abrigos.json')
 
 def carregar_usuarios():
     if not os.path.exists(arquivo):
