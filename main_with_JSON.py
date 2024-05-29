@@ -37,16 +37,16 @@ def carregar_pets():
     return pets
 
 def carregar_abrigos():
-    abrigos = []
+    abrigos_list = []
     try:
         if os.path.exists(abrigos):
             with open(abrigos, 'r') as f:
-                abrigos = json.load(f)
+                abrigos_list = json.load(f)
         if not isinstance(abrigos_list, list):
-            abrigos = []
+            abrigos_list = []
     except (json.JSONDecodeError, FileNotFoundError):
         pass
-    return abrigos
+    return abrigos_list
     
 def salvar_usuarios(usuarios):
     with open(arquivo, 'w') as f:
@@ -111,6 +111,18 @@ def listar_pets():
             print("=" * 50)
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
+
+def listar_abrigos():
+    abrigos_list = carregar_abrigos()
+    if abrigos_list:
+        print("=" * 50)
+        print("LISTA DE ABRIGOS:")
+        print("=" * 50)
+        for abrigo in abrigos_list:
+            print(f"NOME: {abrigo['nome_abrigo']}, endereco: {abrigo['endereco_abrigo']}, capacidade: {abrigo['capacidade']}")
+            print("*" * 50)
+    else:
+        print("NENHUM ABRIGO CADASTRADO.")
 
 def login(email_passado, senha_passada):
     usuarios = carregar_usuarios()
