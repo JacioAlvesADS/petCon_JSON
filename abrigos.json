@@ -1,18 +1,62 @@
 [
     {
-        "nome": "Abrigo A",
-        "localizacao": "Rua A, Número 1"
+        "nome": "Abrigo Aconchego",
+        "endereco": "Rua das Flores, 123",
+        "capacidade": 100,
+        "espaco_disponivel": 50
     },
     {
-        "nome": "Abrigo B",
-        "localizacao": "Rua B, Número 2"
+        "nome": "Abrigo Esperança",
+        "endereco": "Avenida do Sol, 456",
+        "capacidade": 200,
+        "espaco_disponivel": 100
     },
     {
-        "nome": "Abrigo C",
-        "localizacao": "Rua C, Número 3"
+        "nome": "Abrigo Amor Animal",
+        "endereco": "Travessa da Paz, 789",
+        "capacidade": 150,
+        "espaco_disponivel": 75
     },
     {
-        "nome": "Abrigo D",
-        "localizacao": "Rua D, Número 4"
+        "nome": "Abrigo Patinhas Felizes",
+        "endereco": "Rua do Arco-Íris, 321",
+        "capacidade": 80,
+        "espaco_disponivel": 40
+    },
+    {
+        "nome": "Abrigo Coração Peludo",
+        "endereco": "Avenida da Alegria, 654",
+        "capacidade": 120,
+        "espaco_disponivel": 60
+    },
+    {
+        "nome": "Abrigo Vida Nova",
+        "endereco": "Travessa do Amor, 987",
+        "capacidade": 90,
+        "espaco_disponivel": 45
+    },
+    {
+        "nome": "Abrigo Anjos de Quatro Patas",
+        "endereco": "Rua das Estrelas, 741",
+        "capacidade": 110,
+        "espaco_disponivel": 55
+    },
+    {
+        "nome": "Abrigo Lar Doce Lar",
+        "endereco": "Avenida do Universo, 852",
+        "capacidade": 130,
+        "espaco_disponivel": 65
+    },
+    {
+        "nome": "Abrigo Amigos para Sempre",
+        "endereco": "Travessa da Amizade, 963",
+        "capacidade": 140,
+        "espaco_disponivel": 70
+    },
+    {
+        "nome": "Abrigo Companheiros de Vida",
+        "endereco": "Rua do Carinho, 147",
+        "capacidade": 160,
+        "espaco_disponivel": 80
     }
 ]
