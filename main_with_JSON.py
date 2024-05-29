@@ -61,7 +61,7 @@ def salvar_pets(lista_pets):
 
 def adicionar_usuario(nome, idade, email, senha, aptSize):
     usuarios = carregar_usuarios()
-    usuarios.append({'nome': nome, 'idade': idade, 'email': email, 'senha':senha, 'aptSize': int (aptSize)})
+    usuarios.append({'nome': nome, 'idade': idade, 'email': email, 'senha': senha, 'aptSize': int(aptSize)})
     salvar_usuarios(usuarios)
     aptSize = int(aptSize)
     print("😎 USUÁRIO ADICIONADO COM SUCESSO!")
@@ -103,12 +103,11 @@ def encontrar_pets_adequados(aptSize):
 
     return pets_adequados
 
-
 def listar_pets():
     listar_pets = carregar_pets()
     if listar_pets:
         print("=" * 50)
-        print("LISTA DE pets:") 
+        print("LISTA DE PETS:") 
         print("-" * 50)
         for pets in listar_pets:
             print("*" * 50)
@@ -116,7 +115,7 @@ def listar_pets():
             print("*" * 50)
             print("=" * 50)
     else:
-        print("😒 NENHUM USUÁRIO CADASTRADO.")
+        print("😒 NENHUM PET CADASTRADO.")
 
 def listar_abrigos_disponiveis():
     abrigos_disponiveis = carregar_abrigos()
@@ -150,7 +149,6 @@ def atualizar_abrigo(nome_antigo, novo_nome, nova_localizacao):
             print("😙 ABRIGO ATUALIZADO COM SUCESSO!")
             return
     print("😒 ABRIGO NÃO ENCONTRADO.")
-
 
 def excluir_abrigo(nome):
     abrigos_list = carregar_abrigos()
@@ -207,21 +205,31 @@ def buscar_usuario(nome):
             return
     print("😒 USUÁRIO NÃO ENCONTRADO.")
 
+def atualizar_pet(nome_antigo, novo_nome, nova_idade, nova_raca, novo_abrigo, novo_tamanho):
+    lista_pets = carregar_pets()
+    for pet in lista_pets:
+        if pet['nomePet'] == nome_antigo:
+            pet['nomePet'] = novo_nome
+            pet['idadePet'] = nova_idade
+            pet['racaPet'] = nova_raca
+            pet['abrigo'] = novo_abrigo
+            pet['tamanho'] = novo_tamanho
+            salvar_pets(lista_pets)
+            print("😙 PET ATUALIZADO COM SUCESSO!")
+            return
+    print("😒 PET NÃO ENCONTRADO.")
+
 def menu_inicial():
     print(cor.CIANO + "=" * 55 + cor.RESET)
     print(cor.VERMELHO + " ---->>> BEM VINDO A PETCON <<<---- ")
-    print("          1 - lOGIN ")
+    print("          1 - LOGIN ")
     print("          2 - MÓDULO ESTOQUE ")
     print("          3 - SAIR ")
     print(cor.CIANO + "=" * 55 + cor.RESET)
 
-
-
-    
-
 def exibir_menu():
     print("\nMENU:")
-    print("1. Cadastra-se")
+    print("1. Cadastrar-se")
     print("2. Fazer Login!")
     print("3. Listar Usuários")
     print("4. Atualizar Cadastro")
@@ -251,74 +259,76 @@ def main():
                     aptSize = input("DIGITE O TAMANHO DA SUA RESIDÊNCIA EM M²:\n>>>")
                     adicionar_usuario(nome, idade, email, senha, aptSize)
                 elif opcao == "2":
-                      email_passado = input("DIGITE O EMAIL:\n>>> ")
-                      senha_passada = input("DIGITE A SENHA:\n>>> ")
-                      sucesso, nome = login(email_passado, senha_passada)
-                      if sucesso:
-                          print(f"😎 BEM-VINDO, {nome}!")
-                          while True:
-                              
-                              print("\nEscolha uma opção:\n1 - Adicionar novo Pet\n2 - Adotar um Pet\n3 - Alterar informações do pet\n4 - Excluir um Pet\n5 - Ver os pets disponíveis para adoção\n6 - Ver abrigos disponíveis\n7 - Encerrar a Sessão\n")
-                              opcao_logado = input()
+                    email_passado = input("DIGITE O EMAIL:\n>>> ")
+                    senha_passada = input("DIGITE A SENHA:\n>>> ")
+                    sucesso, nome = login(email_passado, senha_passada)
+                    if sucesso:
+                        print(f"😎 BEM-VINDO, {nome}!")
+                        while True:
+                            print("\nEscolha uma opção:\n1 - Adicionar novo Pet\n2 - Adotar um Pet\n3 - Alterar informações do pet\n4 - Excluir um Pet\n5 - Ver os pets disponíveis para adoção\n6 - Ver abrigos disponíveis\n7 - Editar perfil pessoal\n8 - Encerrar a Sessão")
+                            opcao_logado = input()
 
-                              if opcao_logado == '1':
-                                   nomePet = input("Digite o nome do pet:\n>>> ")
-                                   idadePet = input("Digite a idade do pet:\n>>> ")
-                                   racaPet = input("Qual a raça do pet?\n>>> ")
-                                   abrigo = input("Qual abrigo o pet está?\n>>> ")
-                                   tamanho = input("Tamanho do pet P/M/G:\n>>> ")
-                                   adicionar_pet(nomePet, idadePet, racaPet, abrigo, tamanho)
-                              elif opcao_logado == '2':
-                                        print("Buscando pets adequados...")
-                                        usuario_encontrado = False  
-                                        usuarios = carregar_usuarios()
-                                        print()
-                                        for usuario in usuarios:
-                                            if usuario['email'] == email_passado: 
-                                                usuario_encontrado = True 
-                                                aptSize_usuario = usuario['aptSize']
-                                                pets_adequados = encontrar_pets_adequados(aptSize_usuario)
-                                                if pets_adequados:
-                                                    print("Pets adequados encontrados:")
-                                                    for i, pet in enumerate(pets_adequados, start=1):
-                                                        print(f"{i}. Nome: {pet['nomePet']}, Idade: {pet['idadePet']}, Raça: {pet['racaPet']}, Tamanho: {pet['tamanho']}")
-                                                    opcao_adoção = input("Selecione o número correspondente ao pet que deseja adotar (ou '0' para cancelar): ")
-                                                    if opcao_adoção.isdigit():
-                                                        opcao_adoção = int(opcao_adoção)
-                                                        if 0 < opcao_adoção <= len(pets_adequados):
-                                                            pet_selecionado = pets_adequados[opcao_adoção - 1]
-                                                            print(f"Você adotou o pet '{pet_selecionado['nomePet']}'!")
-                                                            print("Restante dos Pets")
-                                                            listar_pets()
-                                                            
-                                                        else:
-                                                            print("Opção inválida.")
-                                                    else:
-                                                        print("Opção inválida.")
+                            if opcao_logado == '1':
+                                nomePet = input("Digite o nome do pet:\n>>> ")
+                                idadePet = input("Digite a idade do pet:\n>>> ")
+                                racaPet = input("Qual a raça do pet?\n>>> ")
+                                abrigo = input("Qual abrigo o pet está?\n>>> ")
+                                tamanho = input("Tamanho do pet P/M/G:\n>>> ")
+                                adicionar_pet(nomePet, idadePet, racaPet, abrigo, tamanho)
+                            elif opcao_logado == '2':
+                                print("Buscando pets adequados...")
+                                usuario_encontrado = False  
+                                usuarios = carregar_usuarios()
+                                print()
+                                for usuario in usuarios:
+                                    if usuario['email'] == email_passado: 
+                                        usuario_encontrado = True 
+                                        aptSize_usuario = usuario['aptSize']
+                                        pets_adequados = encontrar_pets_adequados(aptSize_usuario)
+                                        if pets_adequados:
+                                            print("Pets adequados encontrados:")
+                                            for i, pet in enumerate(pets_adequados, start=1):
+                                                print(f"{i}. Nome: {pet['nomePet']}, Idade: {pet['idadePet']}, Raça: {pet['racaPet']}, Tamanho: {pet['tamanho']}")
+                                            opcao_adocao = input("Selecione o número correspondente ao pet que deseja adotar (ou '0' para cancelar): ")
+                                            if opcao_adocao.isdigit():
+                                                opcao_adocao = int(opcao_adocao)
+                                                if 0 < opcao_adocao <= len(pets_adequados):
+                                                    pet_selecionado = pets_adequados[opcao_adocao - 1]
+                                                    print(f"Você adotou o pet '{pet_selecionado['nomePet']}'!")
+                                                    print("Restante dos Pets")
+                                                    listar_pets()
+                                                    
                                                 else:
-                                                    print("Nenhum pet adequado encontrado.")
-                                                break 
-                                        if not usuario_encontrado:
-                                            print("Usuário não encontrado.")
-                                    
-                              elif opcao_logado == '3':
-                                  print(3)
-                              elif opcao_logado == '4':
-                                  print(4)
-                              elif opcao_logado == '5':
-                                  print(5)
-                                  listar_pets()
-                              elif opcao_logado == '6':
-                                  listar_abrigos_disponiveis()
-                              elif opcao_logado == '7':
-                                  break
-                              else:
-                                  print("Opção inválida. Tente Novamente!")  
-                      
-                      
-                      
-                      else:
-                          print('Tente novamente!')
+                                                    print("Opção inválida.")
+                                            else:
+                                                print("Opção inválida.")
+                                        else:
+                                            print("Nenhum pet adequado encontrado.")
+                                        break 
+                                if not usuario_encontrado:
+                                    print("Usuário não encontrado.")
+                            elif opcao_logado == '3':
+                                nome_antigo = input("Digite o nome do pet a ser atualizado:\n>>> ")
+                                novo_nome = input("Digite o novo nome do pet:\n>>> ")
+                                nova_idade = input("Digite a nova idade do pet:\n>>> ")
+                                nova_raca = input("Digite a nova raça do pet:\n>>> ")
+                                novo_abrigo = input("Digite o novo abrigo do pet:\n>>> ")
+                                novo_tamanho = input("Digite o novo tamanho do pet (P/M/G):\n>>> ")
+                                atualizar_pet(nome_antigo, novo_nome, nova_idade, nova_raca, novo_abrigo, novo_tamanho)
+                            elif opcao_logado == '4':
+                                print(4)
+                            elif opcao_logado == '5':
+                                listar_pets()
+                            elif opcao_logado == '6':
+                                listar_abrigos_disponiveis()
+                            elif opcao_logado == '7':
+                                atualizar_usuario()
+                            elif opcao_logado == '8':
+                                break
+                            else:
+                                print("Opção inválida. Tente Novamente!")  
+                    else:
+                        print('Tente novamente!')
                 elif opcao == "3":
                     listar_usuarios()
                 elif opcao == "4":
@@ -332,7 +342,6 @@ def main():
                 elif opcao == "6":
                     nome = input("DIGITE O NOME DO USUÁRIO:\n>>> ")
                     buscar_usuario(nome)
-                
                 elif opcao == "7":
                     print("VOLTAR AO MENU ANTERIOR...")
                     sleep(2)
