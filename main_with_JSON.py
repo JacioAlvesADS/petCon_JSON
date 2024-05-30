@@ -77,9 +77,9 @@ def adicionar_pet(nomePet, idadePet, racaPet, abrigo, tamanho):
     salvar_pets(lista_pets)
     print("😎 PET ADICIONADO COM SUCESSO!")
 
-def adicionar_abrigo(nome, localizacao):
+def adicionar_abrigo(nome_abrigo, localizacao):
     abrigos_list = carregar_abrigos()
-    abrigos_list.append({'nome': nome, 'localizacao': localizacao})
+    abrigos_list.append({'nome': nome_abrigo, 'localizacao': localizacao})
     with open(abrigos, 'w') as f:
         json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
     print("😎 ABRIGO ADICIONADO COM SUCESSO!")
@@ -156,22 +156,10 @@ def atualizar_abrigo(nome_antigo, novo_nome, nova_localizacao):
             return
     print("😒 ABRIGO NÃO ENCONTRADO.")
 
-def alterar_abrigo(nome_antigo, novo_nome, nova_localizacao):
+def excluir_abrigo(nome_abrigo):
     abrigos_list = carregar_abrigos()
     for abrigo in abrigos_list:
-        if abrigo['nome'] == nome_antigo:
-            abrigo['nome'] = novo_nome
-            abrigo['localizacao'] = nova_localizacao
-            salvar_abrigos(abrigos_list)  
-            print("😎 ABRIGO ATUALIZADO COM SUCESSO!")
-            return
-    print("😒 ABRIGO NÃO ENCONTRADO.")
-
-
-def excluir_abrigo(nome):
-    abrigos_list = carregar_abrigos()
-    for abrigo in abrigos_list:
-        if abrigo['nome'] == nome:
+        if abrigo['nome'] == nome_abrigo:
             abrigos_list.remove(abrigo)
             with open(abrigos, 'w') as f:
                 json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
@@ -220,7 +208,15 @@ def buscar_usuario(nome):
     usuarios = carregar_usuarios()
     for usuario in usuarios:
         if usuario['nome'] == nome:
-            print(f"NOME: {usuario['nome']}, IDADE: {usuario['idade']}")
+            print(f"NOME: {usuario['nome']}, IDADE: {usuario['idade']},")
+            return
+    print("😒 USUÁRIO NÃO ENCONTRADO.")
+
+def buscar_pet(nomePet):
+    lista_pets = carregar_pets()
+    for pet in lista_pets:
+        if pet['nomePet'] == nomePet:
+            print(f"NOME: {pet['nomePet']}, IDADE: {pet['idadePet']}, RAÇA: {pet['racaPet']}")
             return
     print("😒 USUÁRIO NÃO ENCONTRADO.")
 
@@ -241,10 +237,20 @@ def atualizar_pet(nome_antigo, novo_nome, nova_idade, nova_raca, novo_abrigo, no
 def excluir_pet(nomePet):
     lista_pets = carregar_pets()
     for pet in lista_pets:
-        if pet['nomePet'] == nomePet:
+        if pet['nomePet'] == nomePet :
             lista_pets.remove(pet)
             salvar_pets(lista_pets)
             print("😡 PET EXCLUÍDO COM SUCESSO!")
+            return
+    print("😒 PET NÃO ENCONTRADO.")
+
+def excluir_pet_SELECIONADO(nomePet):
+    lista_pets = carregar_pets()
+    for pet in lista_pets:
+        if pet['nomePet'] == nomePet :
+            lista_pets.remove(pet)
+            salvar_pets(lista_pets)
+            print("PET ADOTADO E SAINDO DO NOSSO BANCO DE DADOS!")
             return
     print("😒 PET NÃO ENCONTRADO.")
 
@@ -262,6 +268,7 @@ def exibir_menu_pets():
     print("2. Excluir Pet")
     print("3. Buscar Pet")
     print("4. Alterar Informações do Pet")
+    print("5. Sair!")
 
 def exibir_menu_abrigos():
     print("\nMENU DE ABRIGOS:")
@@ -341,6 +348,8 @@ def main():
                                                 if 0 < opcao_adocao <= len(pets_adequados):
                                                     pet_selecionado = pets_adequados[opcao_adocao - 1]
                                                     print(f"Você adotou o pet '{pet_selecionado['nomePet']}'!")
+                                                    nomePet = pet_selecionado['nomePet']
+                                                    excluir_pet_SELECIONADO(nomePet)
                                                     print("Restante dos Pets")
                                                     listar_pets()
                                                     
@@ -405,43 +414,52 @@ def main():
                 opcao_abrigo = input("ESCOLHA UMA OPÇÃO:\n>>> ")
 
                 if opcao_abrigo == "1":
-                    nome = input("DIGITE O NOME:\n>>> ")
-                    endereco = input("DIGITE O ENDEREÇO:\n>>> ")
-                    aptSize = input("DIGITE O TAMANHO DA SUA RESIDÊNCIA EM M²:\n>>>")
-                    adicionar_usuario(nome, endereco, aptSize)
+                    nome_abrigo = input("Digite o nome do abrigo a ser cadastrado:\n>>>")
+                    localizacao = input("Digite a localização do abrigo:\n>>> ")
+                    adicionar_abrigo(nome_abrigo, localizacao)
 
                 elif opcao_abrigo == "2":
                     nome_antigo = input("Digite o nome do abrigo a ser atualizado:\n>>> ")
                     novo_nome = input("Digite o novo nome do abrigo:\n>>> ")
                     nova_localizacao = input("Digite a nova localização do abrigo:\n>>> ")
-                    alterar_abrigo(nome_antigo, novo_nome, nova_localizacao)
+                    atualizar_abrigo(nome_antigo, novo_nome, nova_localizacao)
 
                 elif opcao_abrigo == "3":
-                    nome = input("DIGITE O NOME A SER EXCLUÍDO:\n>>> ")
-                    excluir_usuario(nome)
+                    nome_abrigo = input("Digite o nome do abrigo que você deseja deletar:\n>>>")
+                    excluir_abrigo(nome_abrigo)
                 elif opcao_abrigo == "4":
                     nome = input("DIGITE O NOME DO ABRIGO")
                     buscar_abrigo(nome)
                 elif opcao_abrigo == "5":
-                 listar_abrigos_disponiveis()
+                    listar_abrigos_disponiveis()
                 elif opcao_abrigo == "6":
                     break
                 else:
                     print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
+
         elif opcao_inicial == 3:
             while True:
                 exibir_menu_pets()
                 opcao_pet = input("ESCOLHA UMA OPÇÃO:\n>>> ")
 
                 if opcao_pet == "1":
-                    print ("1")
+                    listar_pets()
                 elif opcao_pet == "2":
                     nome = input("DIGITE O NOME DO PET A SER EXCLUÍDO:\n>>> ")
                     excluir_pet(nome)
                 elif opcao_pet == "3":
-                    print ("3")
+                    nomePet = input("DIGITE O NOME DO PET QUE DESEJA ENCONTRAR \n>>>")
+                    buscar_pet(nomePet)
                 elif opcao_pet == "4":
-                    print ("4")
+                    nome_antigo = input("Digite o nome do pet a ser atualizado:\n>>> ")
+                    novo_nome = input("Digite o novo nome do pet:\n>>> ")
+                    nova_idade = input("Digite a nova idade do pet:\n>>> ")
+                    nova_raca = input("Digite a nova raça do pet:\n>>> ")
+                    novo_abrigo = input("Digite o novo abrigo do pet:\n>>> ")
+                    novo_tamanho = input("Digite o novo tamanho do pet (P/M/G):\n>>> ")
+                    atualizar_pet(nome_antigo, novo_nome, nova_idade, nova_raca, novo_abrigo, novo_tamanho)
+                elif opcao_pet == "5":
+                    break
         else:
             print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
 

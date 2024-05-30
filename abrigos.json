@@ -12,7 +12,11 @@
         "localizacao": "Rua C, Número 3"
     },
     {
-        "nome": "Abrigo D",
-        "localizacao": "Rua D, Número 4"
+        "nome": "Abrigo Cadastrado",
+        "localizacao": "Casa, 4 "
+    },
+    {
+        "nome": "Abrigo Novo",
+        "localizacao": "Novo 1"
     }
 ]

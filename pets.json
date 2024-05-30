@@ -1,24 +1,10 @@
 [
     {
-        "nomePet": "aurora",
-        "idadePet": "3",
-        "racaPet": "vira lata",
-        "abrigo": "casa",
-        "tamanho": "M"
-    },
-    {
         "nomePet": "Aurora",
         "idadePet": "3",
         "racaPet": "Vira Lata",
         "abrigo": "casa",
         "tamanho": "M"
-    },
-    {
-        "nomePet": "Bobby",
-        "idadePet": "5",
-        "racaPet": "Labrador",
-        "abrigo": "apartamento",
-        "tamanho": "G"
     },
     {
         "nomePet": "Mia",
@@ -33,13 +19,6 @@
         "racaPet": "Pastor Alemão",
         "abrigo": "quintal",
         "tamanho": "G"
-    },
-    {
-        "nomePet": "Luna1",
-        "idadePet": "15",
-        "racaPet": "Vira Lata",
-        "abrigo": "Casa",
-        "tamanho": "M"
     },
     {
         "nomePet": "Charlie",
@@ -224,10 +203,10 @@
         "tamanho": "M"
     },
     {
-        "nomePet": "pet",
-        "idadePet": "12",
-        "racaPet": "pet",
-        "abrigo": "pet",
-        "tamanho": "G"
+        "nomePet": "pet altereado",
+        "idadePet": "12 ",
+        "racaPet": "pet alterado",
+        "abrigo": "pet alterado",
+        "tamanho": "P"
     }
 ]
