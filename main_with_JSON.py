@@ -3,7 +3,7 @@ import os
 from time import sleep
 
 class cor:
-    VERMELHO = '\033[91m' 
+    VERMELHO = '\033[91m'
     VERDE = '\033[92m'
     AMARELO = '\033[93m'
     AZUL = '\033[94m'
@@ -117,6 +117,17 @@ def listar_pets():
             print("=" * 50)
     else:
         print("😒 NENHUM USUÁRIO CADASTRADO.")
+    
+def excluir_pet(nome):
+    adicionar_pet = listar_pets()
+    for pets in carregar_pets:
+        if pets['nome'] == nome:
+            listar_pets.remove(pets)
+            with open(abrigos, 'w') as f:
+                json.dump(listar_pets, f, indent=4, ensure_ascii=False)
+            print("😡 PET EXCLUÍDO COM SUCESSO!")
+            return
+    print("😒 PET NÃO ENCONTRADO.")
 
 def listar_abrigos_disponiveis():
     abrigos_disponiveis = carregar_abrigos()
@@ -226,20 +237,14 @@ def menu_inicial():
     print(cor.CIANO + "=" * 55 + cor.RESET)
     print(cor.VERMELHO + " ---->>> BEM VINDO A PETCON <<<---- ")
     print("          1 - lOGIN ")
-    print("          2 - ABRIGOS ")
+    print("          2 - MÓDULO ESTOQUE ")
     print("          3 - SAIR ")
     print(cor.CIANO + "=" * 55 + cor.RESET)
 
-def exibir_menu_abrigos():
-    print("\nMENU DE ABRIGOS:")
-    print("1. Adicionar Novo Abrigo")
-    print("2. Alterar informações do Abrigo")
-    print("3. Excluir Abrigo")
-    print("4. Buscar Abrigo")
-    print("5. Listar Abrigos")
-    print("6. Voltar")
+
 
     
+
 def exibir_menu():
     print("\nMENU:")
     print("1. Cadastra-se")
@@ -329,7 +334,8 @@ def main():
                                 novo_tamanho = input("Digite o novo tamanho do pet (P/M/G):\n>>> ")
                                 atualizar_pet(nome_antigo, novo_nome, nova_idade, nova_raca, novo_abrigo, novo_tamanho)
                             elif opcao_logado == '4':
-                                print(4)
+                                nome = input("DIGITE O NOME DO PET A SER EXCLUÍDO:\n>>> ")
+                                excluir_pet(nome)
                             elif opcao_logado == '5':
                                 listar_pets()
                             elif opcao_logado == '6':
@@ -368,24 +374,7 @@ def main():
                 else:
                     print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
         elif opcao_inicial == 2:
-            while True:
-                exibir_menu_abrigos()
-                opcao_abrigo = input("ESCOLHA UMA OPÇÃO:\n>>> ")
-
-                if opcao_abrigo == "1":
-                    print ("1")
-                elif opcao_abrigo == "2":
-                    print ("2")
-                elif opcao_abrigo == "3":
-                    print ("3")
-                elif opcao_abrigo == "4":
-                    print ("4")
-                elif opcao_abrigo == "5":
-                 listar_abrigos_disponiveis()
-                elif opcao_abrigo == "6":
-                    break
-                else:
-                    print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
+            print("MÓDULO EM DESENVOLVIMENTO")
         elif opcao_inicial == 3:
             print("🚀 SAINDO...")
             sleep(2)
