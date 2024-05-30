@@ -156,6 +156,17 @@ def atualizar_abrigo(nome_antigo, novo_nome, nova_localizacao):
             return
     print("😒 ABRIGO NÃO ENCONTRADO.")
 
+def alterar_abrigo(nome_antigo, novo_nome, nova_localizacao):
+    abrigos_list = carregar_abrigos()
+    for abrigo in abrigos_list:
+        if abrigo['nome'] == nome_antigo:
+            abrigo['nome'] = novo_nome
+            abrigo['localizacao'] = nova_localizacao
+            salvar_abrigos(abrigos_list)  
+            print("😎 ABRIGO ATUALIZADO COM SUCESSO!")
+            return
+    print("😒 ABRIGO NÃO ENCONTRADO.")
+
 
 def excluir_abrigo(nome):
     abrigos_list = carregar_abrigos()
@@ -224,6 +235,16 @@ def atualizar_pet(nome_antigo, novo_nome, nova_idade, nova_raca, novo_abrigo, no
             pet['tamanho'] = novo_tamanho
             salvar_pets(lista_pets)
             print("😙 PET ATUALIZADO COM SUCESSO!")
+            return
+    print("😒 PET NÃO ENCONTRADO.")
+
+def excluir_pet(nomePet):
+    lista_pets = carregar_pets()
+    for pet in lista_pets:
+        if pet['nomePet'] == nomePet:
+            lista_pets.remove(pet)
+            salvar_pets(lista_pets)
+            print("😡 PET EXCLUÍDO COM SUCESSO!")
             return
     print("😒 PET NÃO ENCONTRADO.")
 
@@ -390,11 +411,11 @@ def main():
                     adicionar_usuario(nome, endereco, aptSize)
 
                 elif opcao_abrigo == "2":
-                                nome_antigo = input("Digite o nome do abrigo a ser atualizado:\n>>> ")
-                                novo_nome = input("Digite o novo nome do abrigo:\n>>> ")
-                                novo_endereco = input("Digite a novo endereco do pet:\n>>> ")
-                                novo_aptSize = input("Digite o novo tamanho do pet (P/M/G):\n>>> ")
-                                atualizar_pet(nome, endereco, aptSize)
+                    nome_antigo = input("Digite o nome do abrigo a ser atualizado:\n>>> ")
+                    novo_nome = input("Digite o novo nome do abrigo:\n>>> ")
+                    nova_localizacao = input("Digite a nova localização do abrigo:\n>>> ")
+                    alterar_abrigo(nome_antigo, novo_nome, nova_localizacao)
+
                 elif opcao_abrigo == "3":
                     nome = input("DIGITE O NOME A SER EXCLUÍDO:\n>>> ")
                     excluir_usuario(nome)
@@ -415,12 +436,12 @@ def main():
                 if opcao_pet == "1":
                     print ("1")
                 elif opcao_pet == "2":
-                    print ("2")
+                    nome = input("DIGITE O NOME DO PET A SER EXCLUÍDO:\n>>> ")
+                    excluir_pet(nome)
                 elif opcao_pet == "3":
                     print ("3")
                 elif opcao_pet == "4":
                     print ("4")
-  
         else:
             print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
 
