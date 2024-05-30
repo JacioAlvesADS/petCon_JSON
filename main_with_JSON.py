@@ -59,6 +59,11 @@ def salvar_pets(lista_pets):
     except IOError:
         print("😡 ERRO AO SALVAR PETS.")
 
+def salvar_abrigos(abrigos_list):
+        with open(arquivo, 'w') as f:
+            json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
+
+
 def adicionar_usuario(nome, idade, email, senha, aptSize):
     usuarios = carregar_usuarios()
     usuarios.append({'nome': nome, 'idade': idade, 'email': email, 'senha':senha, 'aptSize': int (aptSize)})
@@ -71,6 +76,13 @@ def adicionar_pet(nomePet, idadePet, racaPet, abrigo, tamanho):
     lista_pets.append({'nomePet': nomePet, 'idadePet': idadePet, 'racaPet': racaPet, 'abrigo': abrigo, 'tamanho': tamanho})
     salvar_pets(lista_pets)
     print("😎 PET ADICIONADO COM SUCESSO!")
+
+def adicionar_abrigo(nome, localizacao):
+    abrigos_list = carregar_abrigos()
+    abrigos_list.append({'nome': nome, 'localizacao': localizacao})
+    with open(abrigos, 'w') as f:
+        json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
+    print("😎 ABRIGO ADICIONADO COM SUCESSO!")
 
 def listar_usuarios():
     usuarios = carregar_usuarios()
@@ -131,13 +143,6 @@ def listar_abrigos_disponiveis():
             print("=" * 50)
     else:
         print("😒 NENHUM ABRIGO CADASTRADO.")
-
-def adicionar_abrigo(nome, localizacao):
-    abrigos_list = carregar_abrigos()
-    abrigos_list.append({'nome': nome, 'localizacao': localizacao})
-    with open(abrigos, 'w') as f:
-        json.dump(abrigos_list, f, indent=4, ensure_ascii=False)
-    print("😎 ABRIGO ADICIONADO COM SUCESSO!")
 
 def atualizar_abrigo(nome_antigo, novo_nome, nova_localizacao):
     abrigos_list = carregar_abrigos()
@@ -367,7 +372,6 @@ def main():
                 elif opcao == "6":
                     nome = input("DIGITE O NOME DO USUÁRIO:\n>>> ")
                     buscar_usuario(nome)
-                
                 elif opcao == "7":
                     print("VOLTAR AO MENU ANTERIOR...")
                     sleep(2)
@@ -380,13 +384,23 @@ def main():
                 opcao_abrigo = input("ESCOLHA UMA OPÇÃO:\n>>> ")
 
                 if opcao_abrigo == "1":
-                    print ("1")
+                    nome = input("DIGITE O NOME:\n>>> ")
+                    endereco = input("DIGITE O ENDEREÇO:\n>>> ")
+                    aptSize = input("DIGITE O TAMANHO DA SUA RESIDÊNCIA EM M²:\n>>>")
+                    adicionar_usuario(nome, endereco, aptSize)
+
                 elif opcao_abrigo == "2":
-                    print ("2")
+                                nome_antigo = input("Digite o nome do abrigo a ser atualizado:\n>>> ")
+                                novo_nome = input("Digite o novo nome do abrigo:\n>>> ")
+                                novo_endereco = input("Digite a novo endereco do pet:\n>>> ")
+                                novo_aptSize = input("Digite o novo tamanho do pet (P/M/G):\n>>> ")
+                                atualizar_pet(nome, endereco, aptSize)
                 elif opcao_abrigo == "3":
-                    print ("3")
+                    nome = input("DIGITE O NOME A SER EXCLUÍDO:\n>>> ")
+                    excluir_usuario(nome)
                 elif opcao_abrigo == "4":
-                    print ("4")
+                    nome = input("DIGITE O NOME DO ABRIGO")
+                    buscar_abrigo(nome)
                 elif opcao_abrigo == "5":
                  listar_abrigos_disponiveis()
                 elif opcao_abrigo == "6":
