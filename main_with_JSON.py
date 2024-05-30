@@ -227,8 +227,15 @@ def menu_inicial():
     print(cor.VERMELHO + " ---->>> BEM VINDO A PETCON <<<---- ")
     print("          1 - lOGIN ")
     print("          2 - ABRIGOS ")
-    print("          3 - SAIR ")
+    print("          3 - PETS ")
     print(cor.CIANO + "=" * 55 + cor.RESET)
+
+def exibir_menu_pets():
+    print("\nMENU:")
+    print("1. Listar Pets")
+    print("2. Excluir Pet")
+    print("3. Buscar Pet")
+    print("4. Alterar Informações do Pet")
 
 def exibir_menu_abrigos():
     print("\nMENU DE ABRIGOS:")
@@ -387,9 +394,19 @@ def main():
                 else:
                     print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
         elif opcao_inicial == 3:
-            print("🚀 SAINDO...")
-            sleep(2)
-            break
+            while True:
+                exibir_menu_pets()
+                opcao_pet = input("ESCOLHA UMA OPÇÃO:\n>>> ")
+
+                if opcao_pet == "1":
+                    print ("1")
+                elif opcao_pet == "2":
+                    print ("2")
+                elif opcao_pet == "3":
+                    print ("3")
+                elif opcao_pet == "4":
+                    print ("4")
+  
         else:
             print("😡 OPÇÃO INVÁLIDA. TENTE NOVAMENTE!")
 
